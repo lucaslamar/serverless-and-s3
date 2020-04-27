@@ -1,0 +1,37 @@
+service: api-teste-lucas # nome que escolhi para meu serviço
+
+provider:
+  name: aws # aonde estou rodando, neste caso na amazon
+  runtime: nodejs13.10.0 # executável
+  region: sa-east-1 # regiao do meu provider
+  memorySize: 256
+  iamRoleStatements: # permissoes
+    - Effect: Allow # permitir(Allow) ou negar(Deny)
+      Action: # ações que quero controlar 
+        - s3:GetObject
+        - s3:PutObject
+      Resource: # recursos da aws 
+        - "arn:aws:s3:::*" 
+
+functions:
+  imagens:
+    handler: exemplo.manipulaImagens
+    environment:
+      meubucket: lucasnodeserverless
+    events:
+      - s3:
+          bucket: lucasnodeserverless
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploads/
+            - suffix: .jpg
+      - s3:
+          bucket: lucasnodeserverless
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploads/
+            - suffix: .png
+
+
+plugins:
+  - serverless-offline

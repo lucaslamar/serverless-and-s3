@@ -1,0 +1,20 @@
+{
+  "name": "lucaslamar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "dependencies": {
+    "sharp": "^0.25.2"
+  },
+  "devDependencies": {
+    "serverless-offline": "^6.1.4"
+  },
+  "scripts": {
+    "predeploy": "rm -rf node_modules/sharp && npm install --platform=linux --arch=x64 --target=13.8.0 sharp",
+    "deploy": "serverless deploy -v",
+    "postdeploy": "rm -rf node_modules/sharp && npm install sharp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
