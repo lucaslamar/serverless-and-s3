@@ -13,7 +13,7 @@ module.exports.manipulaImagens = async ({ Records: records }, context) => {
         const { key } = record.s3.object;
 
         const image = await S3.getObject({
-          Bucket: process.env.meubucket,
+          Bucket: process.env.bucket,
           Key: key
         }).promise();
 

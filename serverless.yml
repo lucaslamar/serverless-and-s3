@@ -2,7 +2,7 @@ service: api-teste-lucas # nome que escolhi para meu serviço
 
 provider:
   name: aws # aonde estou rodando, neste caso na amazon
-  runtime: nodejs13.10.0 # executável
+  runtime: nodejs12.x # executável
   region: sa-east-1 # regiao do meu provider
   memorySize: 256
   iamRoleStatements: # permissoes
@@ -17,7 +17,7 @@ functions:
   imagens:
     handler: exemplo.manipulaImagens
     environment:
-      meubucket: lucasnodeserverless
+      bucket: lucasnodeserverless
     events:
       - s3:
           bucket: lucasnodeserverless
@@ -33,5 +33,3 @@ functions:
             - suffix: .png
 
 
-plugins:
-  - serverless-offline
