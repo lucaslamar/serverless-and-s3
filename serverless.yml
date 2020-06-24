@@ -17,16 +17,16 @@ functions:
   imagens:
     handler: exemplo.manipulaImagens
     environment:
-      bucket: lucasnodeserverless
+      bucket: nome_do_seu_bucket       # COLOQUE AQUI O NOME UNICO DO SEU BUCKET
     events:
       - s3:
-          bucket: lucasnodeserverless
+          bucket: nome_do_seu_bucket   # COLOQUE AQUI O NOME UNICO DO SEU BUCKET
           event: s3:ObjectCreated:*
           rules:
             - prefix: uploads/
             - suffix: .jpg
       - s3:
-          bucket: lucasnodeserverless
+          bucket: nome_do_seu_bucket   # COLOQUE AQUI O NOME UNICO DO SEU BUCKET
           event: s3:ObjectCreated:*
           rules:
             - prefix: uploads/
